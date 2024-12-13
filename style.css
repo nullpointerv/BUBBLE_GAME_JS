@@ -1,109 +1,92 @@
-*{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/* Universal Reset */
+* {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-html,body{
+
+/* Ensure the body and html take up full height */
+html, body {
     height: 100%;
     width: 100%;
 }
-#main{
+
+/* Main container: centers everything */
+#main {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color:#bfa8db; 
+    align-items: center;
+    background-color: #bfa8db; /* Light purple background */
     height: 100%;
     width: 100%;
-
 }
-#panel{
-    overflow: hidden;
+
+/* Panel containing the game UI */
+#panel {
     height: 85%;
     width: 80%;
-     
-    background-color:#ded9e5; 
-border-radius: 10px;
- 
+    background-color: #ded9e5; /* Light greyish background */
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+/* Panel top (hit, timer, score) */
 #panel-top {
-    padding: 0px 22%;
-    align-items: center;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Stack the elements vertically */
+    align-items: center;
     justify-content: center;
-    height: 10%;
-    width: 100%;
-    background-color: #5e348f;
-    gap: 10%;  
+    height: 15%;
+    background-color: #5e348f; /* Deep purple background */
+    padding: 0 15%;
+    gap: 10%; /* Space between the sections (hit, timer, score) */
 }
+
+/* Common styling for hit, timer, score elements */
 .element {
     display: flex;
-    flex-direction: column;  
-    gap: 10%;  
-    color: white;
+    flex-direction: column; /* Stack label and value vertically */
     align-items: center;
     justify-content: center;
+    color: white;
+    gap: 5%; /* Space between label and value */
 }
-.box{
-    /* align-items: center; */
+
+/* Style for each label and value (e.g., HIT, TIMER, SCORE) */
+.box {
     padding: 10px 18px;
-    background-color: #ffffff;
+    background-color: white;
+    color: #5e348f; /* Deep purple text */
     border-radius: 5px;
-    color: #5e348f;
-    font-size: 15px;
-    font-weight:500;
-
+    font-size: 20px;
+    font-weight: 500;
 }
+
+/* Panel bottom where the bubbles appear */
 #panel-bottom {
-
-    /* background-color: black; */
-
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 64px;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
+    font-size: 64px;
     padding: 20px;
-    height: calc(100% - 10%);
+    height: calc(100% - 15%); /* Remaining height after the top section */
     width: 100%;
 }
 
+/* Mobile and Tablet Responsiveness */
 
-.bubble{
-    
-font-size: 15px;
-font-weight:500;
-background-color: #5e348f;
-color: white;
- height: 50px;
- width: 50px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
-}
-.bubble:hover{
-    background-color: #3a1663;
-    cursor: pointer;
-}
-
-/* Media Queries for Responsiveness */
+/* For tablet and mobile view (max-width: 768px) */
 @media (max-width: 768px) {
-    #panel {
-        width: 90%;
-    }
-
     #panel-top {
-        padding: 0px 10%;
-        flex-direction: column;
-        gap: 10%;
+        padding: 0 10%; /* Less padding on smaller screens */
+        gap: 8%; /* Smaller gap between hit, timer, score */
     }
 
     .element {
-        flex-direction: column;
-        gap: 10%;
+        gap: 8%; /* Smaller space between the label and value */
     }
 
     #panel-bottom {
@@ -118,20 +101,15 @@ color: white;
     }
 }
 
+/* For small devices (max-width: 480px) */
 @media (max-width: 480px) {
-    #panel {
-        width: 95%;
-    }
-
     #panel-top {
-        padding: 0px 5%;
-        flex-direction: column;
-        gap: 5%;
+        padding: 0 5%; /* Further reduce padding */
+        gap: 5%; /* Reduce gap between hit, timer, score */
     }
 
     .element {
-        flex-direction: column;
-        gap: 5%;
+        gap: 5%; /* Even smaller gap between label and value */
     }
 
     #panel-bottom {
@@ -145,3 +123,90 @@ color: white;
         width: 35px;
     }
 }
+
+/* Bubble styling */
+.bubble {
+    background-color: #5e348f; /* Purple background */
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Bubble hover effect */
+.bubble:hover {
+    background-color: #3a1663; /* Darker purple on hover */
+}
+
+/* Final touches for the game UI */
+
+/* Center the panel and ensure it takes up the full viewport height */
+#main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Panel background */
+#panel {
+    border-radius: 10px;
+    background-color: #ded9e5;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Space between the elements in the top panel (HIT, TIMER, SCORE) */
+#panel-top {
+    padding: 0 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+    justify-content: center;
+    align-items: center;
+    background-color: #5e348f;
+}
+
+/* Styling for the text and values */
+.element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+/* Ensure the bottom panel is flexible for different screen sizes */
+#panel-bottom {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 64px;
+}
+
+/* More refined touch for readability */
+.box {
+    padding: 10px 18px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #5e348f;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Small device tweaks */
+@media (max-width: 768px) {
+    .box {
+        font-size: 18px;
+    }
+}
+
