@@ -84,3 +84,60 @@ color: white;
     background-color: #3a1663;
     cursor: pointer;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #panel {
+        width: 90%;
+    }
+
+    #panel-top {
+        padding: 0px 10%;
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    .element {
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    #panel-bottom {
+        font-size: 48px;
+        padding: 15px;
+    }
+
+    .bubble {
+        font-size: 14px;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    #panel {
+        width: 95%;
+    }
+
+    #panel-top {
+        padding: 0px 5%;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .element {
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    #panel-bottom {
+        font-size: 36px;
+        padding: 10px;
+    }
+
+    .bubble {
+        font-size: 12px;
+        height: 35px;
+        width: 35px;
+    }
+}
