@@ -26,24 +26,24 @@ html,body{
 border-radius: 10px;
  
 }
-#panel-top{
+#panel-top {
     padding: 0px 22%;
-align-items: center;
+    align-items: center;
     display: flex;
-    /* justify-content: center; */
+    flex-direction: column; 
+    justify-content: center;
     height: 10%;
     width: 100%;
-    background-color:#5e348f; 
-    gap: 13%;
-
-
+    background-color: #5e348f;
+    gap: 10%;  
 }
-.element{
+.element {
     display: flex;
-gap: 22%;
-color: white;
-align-items: center;   
-
+    flex-direction: column;  
+    gap: 10%;  
+    color: white;
+    align-items: center;
+    justify-content: center;
 }
 .box{
     /* align-items: center; */
@@ -55,7 +55,10 @@ align-items: center;
     font-weight:500;
 
 }
-#panel-bottom{
+#panel-bottom {
+
+    /* background-color: black; */
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,10 +66,11 @@ align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     padding: 20px;
-height: calc(100% - 10%);
-/* background-color: black; */
-width: 100%;
+    height: calc(100% - 10%);
+    width: 100%;
 }
+
+
 .bubble{
     
 font-size: 15px;
