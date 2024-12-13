@@ -1,212 +1,127 @@
-/* Universal Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-/* Ensure the body and html take up full height */
-html, body {
+body, html {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
-/* Main container: centers everything */
 #main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #bfa8db; /* Light purple background */
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    background-color: #bfa8db;
+    padding: 10px;
 }
 
-/* Panel containing the game UI */
 #panel {
-    height: 85%;
-    width: 80%;
-    background-color: #ded9e5; /* Light greyish background */
-    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    max-height: 800px;
+    background-color: #ded9e5;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
-/* Panel top (hit, timer, score) */
 #panel-top {
+    background-color: #5e348f;
     display: flex;
-    flex-direction: column; /* Stack the elements vertically */
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    height: 15%;
-    background-color: #5e348f; /* Deep purple background */
-    padding: 0 15%;
-    gap: 10%; /* Space between the sections (hit, timer, score) */
+    padding: 10px;
+    color: white;
 }
 
-/* Common styling for hit, timer, score elements */
 .element {
     display: flex;
-    flex-direction: column; /* Stack label and value vertically */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: white;
-    gap: 5%; /* Space between label and value */
+    gap: 5px;
 }
 
-/* Style for each label and value (e.g., HIT, TIMER, SCORE) */
 .box {
-    padding: 10px 18px;
     background-color: white;
-    color: #5e348f; /* Deep purple text */
+    color: #5e348f;
+    padding: 10px 15px;
     border-radius: 5px;
-    font-size: 20px;
-    font-weight: 500;
+    min-width: 50px;
+    text-align: center;
 }
 
-/* Panel bottom where the bubbles appear */
 #panel-bottom {
+    flex-grow: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    font-size: 64px;
-    padding: 20px;
-    height: calc(100% - 15%); /* Remaining height after the top section */
-    width: 100%;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 10px;
+    padding: 15px;
+    overflow-y: auto;
 }
 
-/* Mobile and Tablet Responsiveness */
-
-/* For tablet and mobile view (max-width: 768px) */
-@media (max-width: 768px) {
-    #panel-top {
-        padding: 0 10%; /* Less padding on smaller screens */
-        gap: 8%; /* Smaller gap between hit, timer, score */
-    }
-
-    .element {
-        gap: 8%; /* Smaller space between the label and value */
-    }
-
-    #panel-bottom {
-        font-size: 48px;
-        padding: 15px;
-    }
-
-    .bubble {
-        font-size: 14px;
-        height: 40px;
-        width: 40px;
-    }
-}
-
-/* For small devices (max-width: 480px) */
-@media (max-width: 480px) {
-    #panel-top {
-        padding: 0 5%; /* Further reduce padding */
-        gap: 5%; /* Reduce gap between hit, timer, score */
-    }
-
-    .element {
-        gap: 5%; /* Even smaller gap between label and value */
-    }
-
-    #panel-bottom {
-        font-size: 36px;
-        padding: 10px;
-    }
-
-    .bubble {
-        font-size: 12px;
-        height: 35px;
-        width: 35px;
-    }
-}
-
-/* Bubble styling */
 .bubble {
-    background-color: #5e348f; /* Purple background */
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    height: 50px;
     width: 50px;
+    height: 50px;
+    background-color: #5e348f;
+    color: white;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    transition: transform 0.2s;
 }
 
-/* Bubble hover effect */
 .bubble:hover {
-    background-color: #3a1663; /* Darker purple on hover */
+    transform: scale(1.1);
+    background-color: #3a1663;
 }
 
-/* Final touches for the game UI */
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+    #main {
+        padding: 5px;
+    }
 
-/* Center the panel and ensure it takes up the full viewport height */
-#main {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    #panel {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        border-radius: 10px;
+    }
 
-/* Panel background */
-#panel {
-    border-radius: 10px;
-    background-color: #ded9e5;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .bubble {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
 
-/* Space between the elements in the top panel (HIT, TIMER, SCORE) */
-#panel-top {
-    padding: 0 15%;
-    display: flex;
-    flex-direction: column;
-    gap: 15%;
-    justify-content: center;
-    align-items: center;
-    background-color: #5e348f;
-}
+    #panel-top {
+        padding: 8px;
+    }
 
-/* Styling for the text and values */
-.element {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-}
-
-/* Ensure the bottom panel is flexible for different screen sizes */
-#panel-bottom {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 64px;
-}
-
-/* More refined touch for readability */
-.box {
-    padding: 10px 18px;
-    font-size: 20px;
-    font-weight: 500;
-    color: #5e348f;
-    background-color: white;
-    border-radius: 5px;
-}
-
-/* Small device tweaks */
-@media (max-width: 768px) {
     .box {
-        font-size: 18px;
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
 
+@media screen and (max-height: 500px) {
+    .bubble {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
