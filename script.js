@@ -1,65 +1,64 @@
+/ Game variables
+let timer = 60;
+let score = 0;
+let hitrandom = 0;
 
-var timer = 60;
-
-var score = 0;
-
-var hitrandom=0;
-
-
-function makeBubble(){
-    var multinums="";
- 
-    for(var i=1; i<=85;i++){
-    var random = Math.floor(Math.random()*10);
-    multinums +=`<div class="bubble"><h2>${random}</h2> </div>`;
+// Function to create bubbles
+function makeBubble() {
+    let bubbleHTML = "";
+    for (let i = 1; i <= 85; i++) {
+        const random = Math.floor(Math.random() * 10);
+        bubbleHTML += `<div class="bubble">${random}</div>`;
     }
-    document.querySelector("#panel-bottom").innerHTML = multinums;
-
+    document.querySelector("#panel-bottom").innerHTML = bubbleHTML;
 }
-makeBubble();
 
-
-
-function makeTimer(){
-  var timerinterval =  setInterval(function(){
-        if(timer>0){
+// Function to start timer
+function makeTimer() {
+    const timerInterval = setInterval(function() {
+        if (timer > 0) {
             timer--;
-            document.getElementById('timeval').innerHTML=timer;
+            document.getElementById('timeval').textContent = timer;
+        } else {
+            clearInterval(timerInterval);
+            document.querySelector("#panel-bottom").innerHTML = 
+                '<h1 style="width:100%; text-align:center; color:#5e348f;">TIME OVER!!!</h1>';
         }
-        else{
-            clearInterval(timerinterval);
-            document.querySelector("#panel-bottom").innerHTML=`<h1>TIME OVER !!!</h1>`;
-                }
+    }, 1000);
+}
+
+// Function to generate hit value
+function makeHit() {
+    hitrandom = Math.floor(Math.random() * 10);
+    document.getElementById('hitval').textContent = hitrandom;
+}
+
+// Function to update score
+function makeScore() {
+    score += 10;
+    document.getElementById('scoreval').textContent = score;
+}
+
+// Event listener for bubble clicks
+document.querySelector("#panel-bottom").addEventListener("click", function(details) {
+    const clickedElement = details.target;
+    if (clickedElement.classList.contains('bubble')) {
+        const clickednum = Number(clickedElement.textContent);
         
-    },1000)
-}
-makeTimer();
-
-
-function makeHit(){
-hitrandom=Math.floor(Math.random()*10);
-document.getElementById('hitval').innerHTML=hitrandom;
-}
-makeHit();
-
-
-
-function makeScore(){
-     score += 10;
-     document.getElementById('scoreval').innerHTML=score;
-
-}
-
-
-
-
-document.querySelector("#panel-bottom").addEventListener("click",function(details){
-    var clickednum = Number(details.target.textContent);
-console.log(clickednum)
-    if(clickednum === hitrandom){
-        makeScore();
-        makeBubble();
-        makeHit();
+        if (clickednum === hitrandom) {
+            makeScore();
+            makeBubble();
+            makeHit();
+        }
     }
-
 });
+
+// Initialize game
+function initGame() {
+    makeBubble();
+    makeTimer();
+    makeHit();
+}
+
+// Start the game
+initGame();
